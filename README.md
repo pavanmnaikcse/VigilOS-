@@ -4,7 +4,7 @@
 
 ## 1. Project Overview
 
-**VigilOS** is a specialized, autonomous AI platform designed to modernize financial crime investigation. By orchestrating a swarm of specialized AI agents, VigilOS automatically detects anomalies, reconstructs money flow graphs, parses compliance regulations, and builds comprehensive, auditable case files—all before a human investigator even opens the dashboard.
+**VigilOS** is a specialized, autonomous AI platform designed to modernize financial crime investigation. By orchestrating a swarm of specialized AI agents, VigilOS automatically detects anomalies, reconstructs money flow graphs, parses compliance regulations, and builds comprehensive, auditable case filesâ€”all before a human investigator even opens the dashboard.
 
 ## 2. Core Capabilities (Implemented)
 
@@ -24,7 +24,7 @@ VigilOS relies on a modern, decoupled architecture.
 - **Backend**: FastAPI (Python), providing REST endpoints and WebSocket connections.
 - **Machine Learning**: XGBoost and Scikit-Learn for tabular transaction classification.
 - **Agent Orchestration**: Native Python orchestration (note: LangGraph is a planned future integration, current implementation uses native async pipelines).
-- **LLM Layer**: Google Gemini 1.5 Flash (via langchain-google-genai).
+- **LLM Layer**: Google Gemini 1.5 Flash (via langchain-google-genai),local LLM (ollama).
 - **Vector Store**: ChromaDB for RAG (Retrieval-Augmented Generation).
 - **Graph Database**: Neo4j for relationship mapping.
 - **Document Store**: MongoDB for persisting structured case files and audit logs.
@@ -52,7 +52,7 @@ flowchart TD
     C -->|> 75% Risk| D[Trigger Autonomous Investigation]
     C -->|< 75% Risk| E[Clear Transaction]
     
-    D --> F[Agent 1: Scorer]
+    D --> F[Agent 1: Scorer] -->(Agent 2 & 3 message analyzer,link analyzer)
     F --> G[Agent 4 & 5: Neo4j Graph Analysis]
     G --> H[Agent 6: ChromaDB Compliance RAG]
     H --> I[Agent 7 & 8: Synthesis & Explanation]
@@ -90,20 +90,20 @@ flowchart TD
 
 ## 8. Repository Structure
 
-\\\
+
 VigilOS/
 +-- backend/                  # FastAPI server, Agents, ML Inference, DB drivers
-¦   +-- app/
-¦   ¦   +-- routers/          # API endpoints (Commando, Cases, Graph)
-¦   ¦   +-- services/         # Integrations (ChromaDB, Resend)
-¦   ¦   +-- orchestrator.py   # 9-Agent Pipeline logic
-¦   +-- requirements.txt      # Python dependencies
+Â¦   +-- app/
+Â¦   Â¦   +-- routers/          # API endpoints (Commando, Cases, Graph)
+Â¦   Â¦   +-- services/         # Integrations (ChromaDB, Resend)
+Â¦   Â¦   +-- orchestrator.py   # 9-Agent Pipeline logic
+Â¦   +-- requirements.txt      # Python dependencies
 +-- frontend/                 # React 19 Dashboard
-¦   +-- src/
-¦   ¦   +-- components/       # UI Widgets, Graphs, HUD
-¦   ¦   +-- pages/            # Case Room, Queue, Reports
-¦   ¦   +-- hooks/            # Voice Engine, WebSockets
-¦   +-- package.json          # Node dependencies
+Â¦   +-- src/
+Â¦   Â¦   +-- components/       # UI Widgets, Graphs, HUD
+Â¦   Â¦   +-- pages/            # Case Room, Queue, Reports
+Â¦   Â¦   +-- hooks/            # Voice Engine, WebSockets
+Â¦   +-- package.json          # Node dependencies
 +-- bankapp/                  # VigilPay Android Companion App (Capacitor)
 +-- docker/                   # Docker Compose configurations (Neo4j, MongoDB, Chroma)
 +-- data/                     # Synthetic 2M row dataset & regulatory corpus
