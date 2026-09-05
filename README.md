@@ -90,7 +90,7 @@ flowchart TD
 
 ## 8. Repository Structure
 
-
+\\\
 VigilOS/
 +-- backend/                  # FastAPI server, Agents, ML Inference, DB drivers
 ¦   +-- app/
