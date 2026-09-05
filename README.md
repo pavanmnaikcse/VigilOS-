@@ -125,35 +125,35 @@ VigilOS/
 - Google Gemini API Key
 
 ### 1. Environment Configuration
-\\\ash
+``` bash
 git clone <repository_url>
 cd VigilOS
 cp .env.example .env
 # Edit .env and insert your Gemini API Key and DB credentials
-\\\
+```
 
 ### 2. Infrastructure (Docker)
-\\\ash
+```bash
 cd docker
 docker-compose up -d
 # Starts MongoDB (27017), Neo4j (7687), ChromaDB (8001)
-\\\
+```
 
 ### 3. Backend Setup
-\\\ash
+```bash
 cd backend
 python -m venv venv
 source venv/Scripts/activate  # Or venv/bin/activate on Mac/Linux
 pip install -r requirements.txt
 uvicorn app.main:app --host 0.0.0.0 --port 8000
-\\\
+```
 
 ### 4. Frontend Setup
-\\\ash
+```bash
 cd frontend
 npm install
 npm run dev
-\\\
+```
 
 ## 10. Known Limitations (Prototype)
 
