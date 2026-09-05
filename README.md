@@ -90,29 +90,32 @@ flowchart TD
 
 ## 8. Repository Structure
 
-\\\
-VigilOS/
-+-- backend/                  # FastAPI server, Agents, ML Inference, DB drivers
-¦   +-- app/
-¦   ¦   +-- routers/          # API endpoints (Commando, Cases, Graph)
-¦   ¦   +-- services/         # Integrations (ChromaDB, Resend)
-¦   ¦   +-- orchestrator.py   # 9-Agent Pipeline logic
-¦   +-- requirements.txt      # Python dependencies
-+-- frontend/                 # React 19 Dashboard
-¦   +-- src/
-¦   ¦   +-- components/       # UI Widgets, Graphs, HUD
-¦   ¦   +-- pages/            # Case Room, Queue, Reports
-¦   ¦   +-- hooks/            # Voice Engine, WebSockets
-¦   +-- package.json          # Node dependencies
-+-- bankapp/                  # VigilPay Android Companion App (Capacitor)
-+-- docker/                   # Docker Compose configurations (Neo4j, MongoDB, Chroma)
-+-- data/                     # Synthetic 2M row dataset & regulatory corpus
-+-- ml/                       # XGBoost training and evaluation scripts
-+-- scripts/                  # Utilities (Cloudflared tunnels, etc)
-+-- .env.example              # Sanitized environment template
-+-- .gitignore                # Git exclusions
-\\\
+## 8. Repository Structure
 
+```text
+VigilOS/
+├── backend/                 # FastAPI server, Agents, ML Inference, DB drivers
+│   ├── app/
+│   │   ├── routers/         # API endpoints (Commando, Cases, Graph)
+│   │   └── services/        # Integrations (ChromaDB, Resend)
+│   ├── orchestrator.py      # 9-Agent Pipeline logic
+│   └── requirements.txt     # Python dependencies
+│
+├── frontend/                # React 19 Dashboard
+│   ├── src/
+│   │   ├── components/      # UI Widgets, Graphs, HUD
+│   │   ├── pages/           # Case Room, Queue, Reports
+│   │   └── hooks/            # Voice Engine, WebSockets
+│   └── package.json         # Node dependencies
+│
+├── bankapp/                 # VigilPay Android Companion App (Capacitor)
+├── docker/                  # Docker Compose configurations (Neo4j, MongoDB, Chroma)
+├── data/                    # Synthetic 2M row dataset & regulatory corpus
+├── ml/                      # XGBoost training and evaluation scripts
+├── scripts/                 # Utilities (Cloudflared tunnels, etc.)
+├── .env.example             # Sanitized environment template
+└── .gitignore               # Git exclusions
+```
 ## 9. Local Setup & Installation
 
 ### Prerequisites
