@@ -101,7 +101,7 @@ VigilOS/
 │   ├── orchestrator.py      # 9-Agent Pipeline logic
 │   └── requirements.txt     # Python dependencies
 │
-├── frontend/                # React 19 Dashboard
+├── frontend/                # React Dashboard
 │   ├── src/
 │   │   ├── components/      # UI Widgets, Graphs, HUD
 │   │   ├── pages/           # Case Room, Queue, Reports
@@ -111,7 +111,7 @@ VigilOS/
 ├── bankapp/                 # VigilPay Android Companion App (Capacitor)
 ├── docker/                  # Docker Compose configurations (Neo4j, MongoDB, Chroma)
 ├── data/                    # Synthetic 2M row dataset & regulatory corpus
-├── ml/                      # XGBoost training and evaluation scripts
+├── ml/                      # XGBoost training and evaluation scripts by paysim dataset
 ├── scripts/                 # Utilities (Cloudflared tunnels, etc.)
 ├── .env.example             # Sanitized environment template
 └── .gitignore               # Git exclusions
