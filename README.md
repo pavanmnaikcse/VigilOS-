@@ -4,7 +4,7 @@
 
 ## 1. Project Overview
 
-**VigilOS** is a specialized, autonomous AI platform designed to modernize financial crime investigation. By orchestrating a swarm of specialized AI agents, VigilOS automatically detects anomalies, reconstructs money flow graphs, parses compliance regulations, and builds comprehensive, auditable case files—all before a human investigator even opens the dashboard.
+**VigilOS** is a specialized, autonomous AI platform designed to modernize financial crime investigation. By orchestrating a swarm of specialized AI agents, VigilOS automatically detects anomalies, reconstructs money flow graphs, parses compliance regulations, and builds comprehensive, auditable case files all before a human investigator even opens the dashboard.
 
 ## 2. Core Capabilities (Implemented)
 
@@ -45,8 +45,7 @@ When a transaction exceeds the risk threshold, an autonomous investigation is tr
 
 ## 5. System Workflow
 
-\\\mermaid
-flowchart TD
+```
     A[VigilPay Android App] -->|Transaction Payload| B(FastAPI Backend)
     B --> C{XGBoost Model}
     C -->|> 75% Risk| D[Trigger Autonomous Investigation]
@@ -61,7 +60,7 @@ flowchart TD
     J --> K[(MongoDB: Case Generation)]
     K --> L[React Dashboard: Case Room]
     L --> M[Human Investigator Decision]
-\\\
+```
 
 ## 6. AI/ML Implementation Details
 
@@ -90,9 +89,7 @@ flowchart TD
 
 ## 8. Repository Structure
 
-## 8. Repository Structure
-
-```text
+```
 VigilOS/
 ├── backend/                 # FastAPI server, Agents, ML Inference, DB drivers
 │   ├── app/
