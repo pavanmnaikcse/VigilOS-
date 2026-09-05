@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VigilPay</string>
+    <string name="title_activity_main">VigilPay</string>
+    <string name="package_name">com.pn466.vigilpay</string>
+    <string name="custom_url_scheme">com.pn466.vigilpay</string>
+</resources>

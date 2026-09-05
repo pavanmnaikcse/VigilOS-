@@ -1,0 +1,64 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+.pytest_cache/
+
+# ML artifacts
+ml/model/*.pkl
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.npm/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Android
+.gradle/
+app/build/
+local.properties
+*.apk
+*.aab
+
+# Docker
+docker/DOCKER_CHECKPOINTS.md
+
+# Large Data & Local DBs
+data/*.csv
+data/*.json
+!data/demo_accounts.json
+*.sqlite3
+*.db
+logs/
+temp/
+tmp/
+
+# Binaries
+*.exe
+
+data/**/*.csv
+
+data/paysim/*.csv
+
+bankapp/jdk*

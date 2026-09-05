@@ -1,0 +1,131 @@
+﻿/* ============================================================
+   VIGILOS HUD design system
+   ============================================================ */
+:root {
+  --hud-void: oklch(0.14 0.012 240);
+  --hud-void-deep: oklch(0.09 0.01 240);
+  --hud-cyan: oklch(0.82 0.14 220);
+  --hud-cyan-core: oklch(0.92 0.11 210);
+  --hud-cyan-deep: oklch(0.62 0.14 232);
+  --hud-cyan-dim: oklch(0.5 0.07 230);
+  --hud-steel: oklch(0.38 0.02 240);
+  --hud-steel-dim: oklch(0.27 0.015 240);
+  --hud-text: oklch(0.72 0.02 230);
+  --hud-text-dim: oklch(0.52 0.015 235);
+  --hud-warn: oklch(0.78 0.15 70);
+  --hud-font-display: "Michroma", "Rajdhani", system-ui, sans-serif;
+  --hud-font-tech: "Rajdhani", system-ui, sans-serif;
+  /* global motion multiplier driven by system state */
+  --hud-speed: 1;
+  /* 0..1 cyan energy driven by state + voice */
+  --hud-energy: 0.2;
+}
+
+.hud-rot {
+  transform-box: view-box;
+  transform-origin: 400px 400px;
+  will-change: transform;
+}
+.hud-label {
+  font-family: var(--hud-font-tech);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.hud-glow-text {
+  text-shadow:
+    0 0 6px color-mix(in oklch, var(--hud-cyan) 70%, transparent),
+    0 0 22px color-mix(in oklch, var(--hud-cyan) 40%, transparent);
+}
+.hud-noise {
+  background-image:
+    radial-gradient(circle at 50% 45%, oklch(0.22 0.03 235 / 0.55), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+@keyframes hud-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes hud-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes hud-dash-travel {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+@keyframes hud-breathe {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.012);
+  }
+}
+@keyframes hud-pulse-out {
+  0% {
+    transform: scale(0.62);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@keyframes hud-flicker {
+  0%,
+  92%,
+  100% {
+    opacity: var(--hud-flicker-hi, 1);
+  }
+  94% {
+    opacity: 0.35;
+  }
+  96% {
+    opacity: 0.85;
+  }
+  98% {
+    opacity: 0.5;
+  }
+}
+@keyframes hud-text-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes hud-sweep {
+  to {
+    transform: translateX(220%);
+  }
+}
+
+.hud-anim {
+  animation-duration: calc(var(--dur, 40s) / var(--hud-speed));
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.hud-cw {
+  animation-name: hud-spin;
+}
+.hud-ccw {
+  animation-name: hud-spin-rev;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-anim,
+  [class*="hud-"] {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

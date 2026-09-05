@@ -1,0 +1,8 @@
+{
+  "appId": "com.pn466.vigilpay",
+  "appName": "VigilPay",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true
+  }
+}

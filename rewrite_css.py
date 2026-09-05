@@ -1,0 +1,285 @@
+import os
+
+css_content = """
+.dashboard-body {
+  min-height: 0;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 12px;
+  background: #02050a; /* Deepest black/navy */
+}
+
+.graph-panel {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #060b14; /* Deep space navy */
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8);
+}
+
+.react-flow__controls {
+  left: 10px;
+  top: 10px;
+  bottom: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  background: rgba(6, 11, 20, 0.8) !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  color: #00f3ff !important;
+  border-bottom-color: rgba(0, 243, 255, 0.2) !important;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(0, 243, 255, 0.1) !important;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor !important;
+}
+
+.react-flow__handle {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* Hexagon Account Node */
+.hex-wrapper {
+  position: relative;
+  width: 130px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: grab;
+}
+
+.hex-wrapper:active {
+  cursor: grabbing;
+}
+
+.hex-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hex-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.hex-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hex-subtitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.selected .hex-svg {
+  filter: brightness(1.5);
+}
+
+/* HUD Property Node */
+.hud-property-node {
+  background: rgba(6, 14, 26, 0.85);
+  border: 1px solid #00f3ff;
+  border-radius: 4px;
+  padding: 8px 14px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1), inset 0 0 10px rgba(0, 243, 255, 0.05);
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.hud-property-node::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 8px; height: 8px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+}
+.hud-property-node::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 8px; height: 8px;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.hud-property-label {
+  font-size: 9px;
+  color: #00f3ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hud-property-value {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Transaction Edge HUD */
+.hud-edge-label {
+  position: absolute;
+  pointer-events: all;
+  background: rgba(6, 14, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 10px 14px;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hud-edge-label:hover, .hud-edge-label.selected {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.1);
+  z-index: 20;
+}
+
+.hud-edge-title {
+  font-size: 9px;
+  color: #8a9bb3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.hud-edge-val {
+  font-size: 13px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.risk-text {
+  color: #ff1e56 !important;
+  font-weight: 600;
+}
+
+.mt-1 { margin-top: 4px; }
+
+/* Side Panel Adjustments for Dark Theme */
+.side-panel {
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(6, 14, 26, 0.95);
+  padding: 12px;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.side-panel h3 {
+  font-size: 11px;
+  color: #00f3ff;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.account-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.account-title svg { color: #00f3ff; width: 20px; }
+.account-title b { font-size: 11px; color: #fff; }
+.account-title span { margin-left: auto; font-size: 10px; color: #8a9bb3; }
+
+.pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 22px;
+  font-size: 10px;
+  color: #8a9bb3;
+}
+.pair b { font-weight: 500; color: #fff; text-align: right; }
+
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metrics > div {
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.02);
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.metrics svg { width: 18px; color: #00f3ff; }
+.metrics > div:nth-child(4) svg { color: #ff1e56; }
+.metrics span { font-size: 9px; color: #8a9bb3; display: flex; flex-direction: column; }
+.metrics b { font-size: 12px; color: #fff; font-weight: 600; margin-top: 2px;}
+
+.tone-high, .danger { color: #ff1e56 !important; }
+.tone-medium { color: #ffb703 !important; }
+.tone-low, .success { color: #00f3ff !important; }
+
+/* Legends */
+.graph-legend {
+  position: absolute;
+  z-index: 5;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  background: rgba(6, 14, 26, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  padding: 10px;
+  color: #8a9bb3;
+  font-size: 10px;
+}
+.relationship-legend {
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.graph-legend span { display: flex; align-items: center; gap: 8px; }
+.line { width: 24px; height: 2px; background: currentColor; position: relative; }
+.line.green { color: #00f3ff; }
+.line.red { color: #ff1e56; }
+.line.dotted { color: #00f3ff; background: transparent; border-bottom: 1px dashed currentColor; }
+.risk-dot { width: 8px; height: 8px; background: #ff1e56; border-radius: 50%; box-shadow: 0 0 8px #ff1e56; }
+"""
+
+with open(r"C:\Users\pn466\OneDrive\Documents\VigilOS\frontend\src\components\NetworkGraph.css", "w", encoding="utf-8") as f:
+    f.write(css_content)

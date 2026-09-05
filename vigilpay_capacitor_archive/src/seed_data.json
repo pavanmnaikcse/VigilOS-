@@ -1,0 +1,138 @@
+[
+  {
+    "name": "Alice",
+    "account_id": "ACC_0_0",
+    "starting_balance": 50000.0,
+    "history": [
+      {
+        "type": "CASH_OUT",
+        "amount": 7485.25,
+        "oldbalanceOrg": 25865.0,
+        "newbalanceOrig": 18379.75,
+        "oldbalanceDest": 342950.36,
+        "newbalanceDest": 350435.61,
+        "step": 183
+      },
+      {
+        "type": "TRANSFER",
+        "amount": 744141.17,
+        "oldbalanceOrg": 256787.48,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 770235.96,
+        "newbalanceDest": 1514377.13,
+        "step": 276
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 501864.78,
+        "oldbalanceOrg": 0.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 1237539.08,
+        "newbalanceDest": 1739403.87,
+        "step": 283
+      }
+    ]
+  },
+  {
+    "name": "Bob",
+    "account_id": "ACC_1_0",
+    "starting_balance": 50000.0,
+    "history": [
+      {
+        "type": "CASH_OUT",
+        "amount": 39401.86,
+        "oldbalanceOrg": 0.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 732707.47,
+        "newbalanceDest": 772109.34,
+        "step": 276
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 173931.2,
+        "oldbalanceOrg": 0.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 387381.8,
+        "newbalanceDest": 561313.0,
+        "step": 157
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 29100.11,
+        "oldbalanceOrg": 0.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 3708061.13,
+        "newbalanceDest": 3737161.24,
+        "step": 139
+      }
+    ]
+  },
+  {
+    "name": "Charlie",
+    "account_id": "ACC_2_0",
+    "starting_balance": 50000.0,
+    "history": [
+      {
+        "type": "CASH_OUT",
+        "amount": 163908.2,
+        "oldbalanceOrg": 311512.0,
+        "newbalanceOrig": 147603.8,
+        "oldbalanceDest": 0.0,
+        "newbalanceDest": 163908.2,
+        "step": 309
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 143956.45,
+        "oldbalanceOrg": 99137.15,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 744668.72,
+        "newbalanceDest": 888625.17,
+        "step": 202
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 117883.51,
+        "oldbalanceOrg": 9752.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 0.0,
+        "newbalanceDest": 117883.51,
+        "step": 206
+      }
+    ]
+  },
+  {
+    "name": "Diana",
+    "account_id": "ACC_3_11695",
+    "starting_balance": 11695.0,
+    "history": [
+      {
+        "type": "CASH_OUT",
+        "amount": 142425.48,
+        "oldbalanceOrg": 104949.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 1364975.71,
+        "newbalanceDest": 1507401.19,
+        "step": 188
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 473492.56,
+        "oldbalanceOrg": 35179.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 160464.32,
+        "newbalanceDest": 633956.88,
+        "step": 705
+      },
+      {
+        "type": "CASH_OUT",
+        "amount": 136404.43,
+        "oldbalanceOrg": 28618.0,
+        "newbalanceOrig": 0.0,
+        "oldbalanceDest": 0.0,
+        "newbalanceDest": 136404.43,
+        "step": 260
+      }
+    ]
+  }
+]
